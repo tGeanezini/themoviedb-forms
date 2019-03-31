@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DetailsTitle" xml:space="preserve">
-    <value>Movie Details</value>
+  <data name="LabelMovieGenre" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="LabelMovieOverview" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="LabelMovieReleaseDate" xml:space="preserve">
+    <value>Release Date</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Search movies...</value>
   </data>
   <data name="UpcomingMoviesTitle" xml:space="preserve">
     <value>Upcoming Movies</value>

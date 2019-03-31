@@ -10,12 +10,24 @@ namespace TheMovieDb
         {
             InitializeComponent();
 
+            RegisterTypes();
             ConfigureMap();
+        }
+
+        void RegisterTypes()
+        {
+            ViewModelLocator.Instance.Register<INavigationService, NavigationService>();
+
+            ViewModelLocator.Instance.Register<MainViewModel>();
+            ViewModelLocator.Instance.Register<DetailViewModel>();
+
+            ViewModelLocator.Instance.Build();
         }
 
         void ConfigureMap ()
         {
             NavigationService.ConfigureMap<MainViewModel, MainPage>();
+            NavigationService.ConfigureMap<DetailViewModel, DetailPage>();
         }
     }
 }

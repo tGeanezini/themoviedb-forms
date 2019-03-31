@@ -22,7 +22,7 @@ namespace TheMovieDb {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource {
+    public class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TheMovieDb {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TheMovieDb.Resource", typeof(Resource).Assembly);
@@ -51,7 +51,7 @@ namespace TheMovieDb {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,18 +61,45 @@ namespace TheMovieDb {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Movie Details.
+        ///   Looks up a localized string similar to Genre.
         /// </summary>
-        internal static string DetailsTitle {
+        public static string LabelMovieGenre {
             get {
-                return ResourceManager.GetString("DetailsTitle", resourceCulture);
+                return ResourceManager.GetString("LabelMovieGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overview.
+        /// </summary>
+        public static string LabelMovieOverview {
+            get {
+                return ResourceManager.GetString("LabelMovieOverview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release Date.
+        /// </summary>
+        public static string LabelMovieReleaseDate {
+            get {
+                return ResourceManager.GetString("LabelMovieReleaseDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search movies....
+        /// </summary>
+        public static string SearchPlaceholder {
+            get {
+                return ResourceManager.GetString("SearchPlaceholder", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Upcoming Movies.
         /// </summary>
-        internal static string UpcomingMoviesTitle {
+        public static string UpcomingMoviesTitle {
             get {
                 return ResourceManager.GetString("UpcomingMoviesTitle", resourceCulture);
             }

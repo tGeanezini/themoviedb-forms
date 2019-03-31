@@ -6,7 +6,7 @@ namespace TheMovieDb
 {
     public class DetailViewModel : BaseViewModel
     {
-        public DetailViewModel(string title) : base(Resource.DetailsTitle)
+        public DetailViewModel(string title) : base(title)
         {
         }
     }
