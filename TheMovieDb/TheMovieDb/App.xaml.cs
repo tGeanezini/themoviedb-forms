@@ -12,11 +12,13 @@ namespace TheMovieDb
 
             RegisterTypes();
             ConfigureMap();
+            InitializeAsync();
         }
 
         void RegisterTypes()
         {
             ViewModelLocator.Instance.Register<INavigationService, NavigationService>();
+            ViewModelLocator.Instance.Register<IMovieService, MovieService>();
 
             ViewModelLocator.Instance.Register<MainViewModel>();
             ViewModelLocator.Instance.Register<DetailViewModel>();
@@ -29,5 +31,8 @@ namespace TheMovieDb
             NavigationService.ConfigureMap<MainViewModel, MainPage>();
             NavigationService.ConfigureMap<DetailViewModel, DetailPage>();
         }
+
+        async void InitializeAsync() =>
+            await ViewModelLocator.Instance.Resolve<INavigationService>().NavigateToAsync<MainViewModel>();
     }
 }

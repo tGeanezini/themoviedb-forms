@@ -8,7 +8,7 @@ namespace TheMovieDb
     public interface IApiRestful
     {
         [Get("/movie/upcoming?api_key={apiKey}")]
-        Task<IEnumerable<MovieResponse>> GetUpcomingMoviesAsync(string apiKey);
+        Task<MovieResponse> GetUpcomingMoviesAsync(string apiKey);
 
         [Get("/genre/movie/list?api_key={apiKey}")]
         Task<GenreResponse> GetMovieGenresAsync(string apiKey);

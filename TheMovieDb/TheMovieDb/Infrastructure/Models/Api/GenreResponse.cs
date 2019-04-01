@@ -1,8 +1,9 @@
-﻿namespace TheMovieDb
+﻿using System.Collections.Generic;
+
+namespace TheMovieDb
 {
     public class GenreResponse
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public IEnumerable<GenreItemResponse> Genres { get; set; }
     }
 }
