@@ -61,6 +61,15 @@ namespace TheMovieDb {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Loading Movies.
+        /// </summary>
+        public static string LabelLoadingMovies {
+            get {
+                return ResourceManager.GetString("LabelLoadingMovies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Genre.
         /// </summary>
         public static string LabelMovieGenre {

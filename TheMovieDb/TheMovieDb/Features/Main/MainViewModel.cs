@@ -14,6 +14,13 @@ namespace TheMovieDb
 
         public ObservableCollection<MovieWrapper> Items { get; }
 
+        bool _dataLoaded;
+        public bool DataLoaded
+        {
+            get { return _dataLoaded; }
+            set { _dataLoaded = value; OnPropertyChanged(); }
+        }
+
         public MainViewModel(IMovieService movieService) : base(Resource.UpcomingMoviesTitle)
         {
             _movieService = movieService;
@@ -24,11 +31,15 @@ namespace TheMovieDb
 
         public override async Task InitializeAsync()
         {
-            await base.InitializeAsync();            
+            await base.InitializeAsync();
+
+            DataLoaded = false;
 
             var movies = await _movieService.GetMoviesAsync();
             Items.Clear();
             movies.ToList().ForEach(m => Items.Add(m));
+
+            DataLoaded = true;
         }
 
         async Task ItemClickedCommandExecuteAsync(MovieWrapper movie)
