@@ -126,6 +126,9 @@
   <data name="LabelMovieReleaseDate" xml:space="preserve">
     <value>Release Date</value>
   </data>
+  <data name="MovieDetailsTitle" xml:space="preserve">
+    <value>Details</value>
+  </data>
   <data name="SearchPlaceholder" xml:space="preserve">
     <value>Search movies...</value>
   </data>

@@ -33,7 +33,7 @@ namespace TheMovieDb
 
         async Task ItemClickedCommandExecuteAsync(MovieWrapper movie)
         {
-            await NavigationService.NavigateToAsync<DetailViewModel>();
+            await NavigationService.NavigateToAsync<DetailViewModel>(movie);
         }
     }
 }

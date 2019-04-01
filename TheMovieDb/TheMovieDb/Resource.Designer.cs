@@ -88,6 +88,15 @@ namespace TheMovieDb {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string MovieDetailsTitle {
+            get {
+                return ResourceManager.GetString("MovieDetailsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search movies....
         /// </summary>
         public static string SearchPlaceholder {

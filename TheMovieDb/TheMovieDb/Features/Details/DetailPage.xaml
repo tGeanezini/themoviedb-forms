@@ -1,12 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TheMovieDb.DetailPage">
+             x:Class="TheMovieDb.DetailPage"
+             Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="8">
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Spacing="8" Margin="8">
+                <Label Text="{Binding MovieTitle}" HorizontalTextAlignment="Center"/>
+                <Image VerticalOptions="Start" HorizontalOptions="FillAndExpand" 
+                       HeightRequest="250" Aspect="AspectFill">
+                    <Image.Source>
+                        <UriImageSource Uri="{Binding PosterImage}" CachingEnabled="True"/>
+                    </Image.Source>
+                </Image>
+                <Label Text="{Binding Genre}"/>
+                <Label Text="{Binding Overview}"/>
+                <Label Text="{Binding ReleaseDate}"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
