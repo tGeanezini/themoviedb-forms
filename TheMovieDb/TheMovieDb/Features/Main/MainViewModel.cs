@@ -16,7 +16,16 @@ namespace TheMovieDb
         public ObservableCollection<MovieWrapper> Items { get; }
 
         protected int Page { get; private set; }
+
         bool hasMoviesToLoad = true;
+
+
+        bool _pageLoaded;
+        public bool PageLoaded
+        {
+            get { return _pageLoaded; }
+            set { _pageLoaded = value; OnPropertyChanged(); }
+        }
 
         bool _dataLoaded;
         public bool DataLoaded
@@ -36,7 +45,7 @@ namespace TheMovieDb
 
             Page = 1;
 
-            DataLoaded = false;
+            PageLoaded = false;
         }
 
         public override async Task InitializeAsync()
@@ -51,6 +60,7 @@ namespace TheMovieDb
 
                 hasMoviesToLoad = movies.Any();
 
+                PageLoaded = true;
                 DataLoaded = true;
 
                 Page++;

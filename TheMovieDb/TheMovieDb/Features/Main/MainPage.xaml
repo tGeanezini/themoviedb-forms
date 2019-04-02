@@ -17,7 +17,7 @@
 
                 <StackLayout.Triggers>
                     <DataTrigger TargetType="StackLayout"
-                                 Binding="{Binding DataLoaded}"
+                                 Binding="{Binding PageLoaded}"
                                  Value="True">
                         <Setter Property="IsVisible" Value="False"/>
                     </DataTrigger>
@@ -54,9 +54,10 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                     <ListView.Footer>
-                        <ActivityIndicator IsVisible="{Binding IsBusy}"
-                                           IsRunning="{Binding IsBusy}"
-                                           Margin="16"/>
+                        <ActivityIndicator IsVisible="{Binding DataLoaded}"
+                                           IsRunning="{Binding DataLoaded}"
+                                           Margin="16"
+                                           Color="{StaticResource YellowAccent}"/>
                     </ListView.Footer>
                     <ListView.Behaviors>
                         <local:InfiniteListScrollBehavior LoadMoreCommand="{Binding LoadMoreMoviesCommand}"/>
