@@ -53,6 +53,14 @@
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
+                    <ListView.Footer>
+                        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                                           IsRunning="{Binding IsBusy}"
+                                           Margin="16"/>
+                    </ListView.Footer>
+                    <ListView.Behaviors>
+                        <local:InfiniteListScrollBehavior LoadMoreCommand="{Binding LoadMoreMoviesCommand}"/>
+                    </ListView.Behaviors>
                 </ListView>
             </StackLayout>
         </StackLayout>        

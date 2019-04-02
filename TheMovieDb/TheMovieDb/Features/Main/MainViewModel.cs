@@ -11,8 +11,12 @@ namespace TheMovieDb
         readonly IMovieService _movieService;
 
         public ICommand ItemClickedCommand { get; }
+        public ICommand LoadMoreMoviesCommand { get; }
 
         public ObservableCollection<MovieWrapper> Items { get; }
+
+        protected int Page { get; private set; }
+        bool hasMoviesToLoad = true;
 
         bool _dataLoaded;
         public bool DataLoaded
@@ -26,25 +30,39 @@ namespace TheMovieDb
             _movieService = movieService;
 
             ItemClickedCommand = new Command<MovieWrapper>(async (item) => await ItemClickedCommandExecuteAsync(item));
+            LoadMoreMoviesCommand = new Command(async () => await LoadMoreMoviesAsync());
+
             Items = new ObservableCollection<MovieWrapper>();
+
+            Page = 1;
+
+            DataLoaded = false;
         }
 
         public override async Task InitializeAsync()
         {
             await base.InitializeAsync();
 
-            DataLoaded = false;
+            if(hasMoviesToLoad)
+            {              
+                var movies = await _movieService.GetMoviesAsync(Page);
 
-            var movies = await _movieService.GetMoviesAsync();
-            Items.Clear();
-            movies.ToList().ForEach(m => Items.Add(m));
+                movies.ToList().ForEach(m => Items.Add(m));
 
-            DataLoaded = true;
+                hasMoviesToLoad = movies.Any();
+
+                DataLoaded = true;
+
+                Page++;
+            }
+            
         }
 
         async Task ItemClickedCommandExecuteAsync(MovieWrapper movie)
         {
             await NavigationService.NavigateToAsync<DetailViewModel>(movie);
         }
+
+        async Task LoadMoreMoviesAsync() => await InitializeAsync();
     }
 }

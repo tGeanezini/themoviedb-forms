@@ -8,18 +8,18 @@ namespace TheMovieDb
 {
     public interface IMovieService
     {
-        Task<IEnumerable<MovieWrapper>> GetMoviesAsync();
+        Task<IEnumerable<MovieWrapper>> GetMoviesAsync(int page);
     }
 
     public class MovieService : IMovieService
     {
         IApiRestful Api => RestService.For<IApiRestful>(ConstantsHelper.UrlBase);
 
-        public async Task<IEnumerable<MovieWrapper>> GetMoviesAsync()
+        public async Task<IEnumerable<MovieWrapper>> GetMoviesAsync(int page)
         {
             try
             {
-                var moviesResult = await Api.GetUpcomingMoviesAsync(ConstantsHelper.ApiKey);
+                var moviesResult = await Api.GetUpcomingMoviesAsync(ConstantsHelper.ApiKey, page);
                 var genresResult = await Api.GetMovieGenresAsync(ConstantsHelper.ApiKey);
 
                 if (moviesResult != null)
