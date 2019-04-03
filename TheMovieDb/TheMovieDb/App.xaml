@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TheMovieDb.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!--#region Colors-->
+
+            <Color x:Key="AppBackgroundColor">#3d434b</Color>
+            <Color x:Key="DefaultFontColor">#ececec</Color>
+            <Color x:Key="SeparatorColor">#869197</Color>
+            <Color x:Key="YellowAccent">#f7cd25</Color>
+
+            <!--#endregion-->
+
+            <!--#region Styles-->
+
+            <Style x:Key="lblDefaultTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="{StaticResource DefaultFontColor}"/>
+            </Style>
+
+            <Style x:Key="lblDefaultTextMedium" TargetType="Label" BasedOn="{StaticResource lblDefaultTitle}">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="None"/>
+            </Style>
+
+            <Style x:Key="lblDefaultTextSmall" TargetType="Label" BasedOn="{StaticResource lblDefaultTitle}">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="FontAttributes" Value="None"/>
+            </Style>
+
+            <!--#endregion-->
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TheMovieDb"
+             Title="{Binding Title}"
+             x:Class="TheMovieDb.MainPage"
+             BackgroundColor="{StaticResource AppBackgroundColor}">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+
+            <StackLayout Spacing="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <ActivityIndicator IsVisible="True"
+                                   IsRunning="True"
+                                   Color="{StaticResource YellowAccent}"/>
+
+                <Label Text="{x:Static local:Resource.LabelLoadingMovies}" Style="{StaticResource lblDefaultTitle}"/>
+
+                <StackLayout.Triggers>
+                    <DataTrigger TargetType="StackLayout"
+                                 Binding="{Binding PageLoaded}"
+                                 Value="True">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </DataTrigger>
+                </StackLayout.Triggers>
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding DataLoaded}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ListView VerticalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand"
+                  HasUnevenRows="True"
+                  ItemsSource="{Binding Items}"
+                  CachingStrategy="RecycleElement"
+                  local:AttachedItemTappedBehavior.Command="{Binding ItemClickedCommand}"
+                  SeparatorColor="{StaticResource SeparatorColor}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="FillAndExpand" Spacing="8">
+                                    <Image VerticalOptions="Start" HorizontalOptions="Start" HeightRequest="125">
+                                        <Image.Source>
+                                            <UriImageSource Uri="{Binding PosterPath}" CachingEnabled="True"/>
+                                        </Image.Source>
+                                    </Image>
+
+                                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+                                                 Spacing="8" Margin="8">
+                                        <Label Text="{Binding Title}" Style="{StaticResource lblDefaultTextMedium}" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Genres}" Style="{StaticResource lblDefaultTextSmall}"/>
+                                        <Label Text="{Binding ReleaseDate}" Style="{StaticResource lblDefaultTextSmall}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.Footer>
+                        <ActivityIndicator IsVisible="{Binding DataLoaded}"
+                                           IsRunning="{Binding DataLoaded}"
+                                           Margin="16"
+                                           Color="{StaticResource YellowAccent}"/>
+                    </ListView.Footer>
+                    <ListView.Behaviors>
+                        <local:InfiniteListScrollBehavior LoadMoreCommand="{Binding LoadMoreMoviesCommand}"/>
+                    </ListView.Behaviors>
+                </ListView>
+            </StackLayout>
+        </StackLayout>        
+    </ContentPage.Content>
+</ContentPage>
